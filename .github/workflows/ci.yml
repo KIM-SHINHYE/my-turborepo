@@ -21,10 +21,8 @@ jobs:
           node-version: "18" # Node.js 버전 지정
           cache: "pnpm" # pnpm 캐시를 사용하도록 설정
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8 # 원하는 pnpm 버전 (여기선 v8 사용)
+      - name: Install pnpm
+        run: npm install -g pnpm # pnpm을 전역으로 설치
 
       - name: Install dependencies
         run: pnpm install
