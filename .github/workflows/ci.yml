@@ -1,38 +1,50 @@
-name: Cache
-on: push
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+name: CI
 
-      - uses: actions/setup-node@v3
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  build:
+    name: Build and Test
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    # To use Remote Caching, uncomment the next lines and follow the steps below.
+    # env:
+    #  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+    #  TURBO_TEAM: ${{ vars.TURBO_TEAM }}
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 8
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4
         with:
           node-version: 20
-
-      - name: Install pnpm
-        run: npm install -g pnpm
+          cache: "pnpm"
 
       - name: Install dependencies
         run: pnpm install
 
       - name: Build
-        run: pnpm build
+        run: pnpm build --cache-dir=.turbo
 
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
+      - name: Cache turbo build setup
+        uses: actions/cache@v3
         with:
-          name: build-artifacts
-          path: path/to/build/output
+          path: .turbo
+          key: ${{ runner.os }}-turbo-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-turbo-
 
-      # - name: Download build artifacts
-      #   uses: actions/download-artifact@v3
-      #   with:
-      #     name: build-artifacts
-      #     path: path/to/download
-
-          
+      # - name: Test
+      #   run: pnpm test
