@@ -1,35 +1,38 @@
-name: Test
+name: Cache
 on: push
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Setup
-        uses: ./.github/actions/setup
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
 
-      - name: Run Lint
-        run: pnpm lint
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - name: Install dependencies
+        run: pnpm install
 
       - name: Build
         run: pnpm build
 
-      # - name: Check working copy
-      #   run: git diff --exit-code
-
-      - name: Run TurboRepo Remote Cache Server
-        uses: ./
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
         with:
-          storage-provider: local
-          storage-path: test
-      
-      # - name: Ensure environmental variables have been set correctly
-      #   run: |
-      #     echo $TURBO_API | grep -P "^http://127.0.0.1:\d+$"
-      #     echo $TURBO_TOKEN | grep -P "^[a-zA-Z0-9]{48}$"
-      #     echo $TURBO_TEAM | grep -P "^ci$"
+          name: build-artifacts
+          path: path/to/build/output
+
+      # - name: Download build artifacts
+      #   uses: actions/download-artifact@v3
+      #   with:
+      #     name: build-artifacts
+      #     path: path/to/download
+
+          
