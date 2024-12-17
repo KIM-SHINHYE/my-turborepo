@@ -8,38 +8,26 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Check out code
+        uses: actions/checkout@v4
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14'
+      - name: Cache turbo build setup
+        uses: actions/cache@v4
+        with:
+          path: .turbo
+          key: ${{ runner.os }}-turbo-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-turbo-
 
-    - name: Install pnpm
-      run: npm install -g pnpm
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
 
-    - name: Restore cache
-      uses: actions/cache@v2
-      with:
-        path: .next/cache
-        key: ${{ runner.os }}-build-${{ hashFiles('**/pnpm-lock.yaml') }}
-        restore-keys: |
-          ${{ runner.os }}-build-
+      - name: Install dependencies
+        run: pnpm install
 
-    - name: Install dependencies
-      run: pnpm install
-
-    - name: Build
-      run: pnpm run build
-
-    - name: Save cache
-      uses: actions/cache@v2
-      with:
-        path: .next/cache
-        key: ${{ runner.os }}-build-${{ hashFiles('**/pnpm-lock.yaml') }}
-
-    - name: Deploy
-      run: echo "Deploying..."
+      - name: Build
+        run: pnpm run build
