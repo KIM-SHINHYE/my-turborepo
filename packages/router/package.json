@@ -1,0 +1,9 @@
+{
+  "name": "@repo/router",
+  "version": "1.0.0",
+  "main": "./navigate.ts",
+  "types": "./navigate.d.ts",
+  "scripts": {
+    "build": "tsc"
+  }
+}
