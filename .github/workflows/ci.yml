@@ -1,27 +1,35 @@
-name: CI with Remote Cache
-
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+name: Test
+on: push
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v3
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "18" # Node.js 버전 지정
+      - name: Setup
+        uses: ./.github/actions/setup
 
-      - name: Install dependencies
-        run: npm install # npm을 사용하여 의존성 설치
+      - name: Run Lint
+        run: pnpm lint
 
       - name: Build
-        run: npm run build # npm을 사용하여 빌드
+        run: pnpm build
+
+      - name: Check working copy
+        run: git diff --exit-code
+
+      - name: Run TurboRepo Remote Cache Server
+        uses: ./
+        with:
+          storage-provider: local
+          storage-path: test
+      
+      - name: Ensure environmental variables have been set correctly
+        run: |
+          echo $TURBO_API | grep -P "^http://127.0.0.1:\d+$"
+          echo $TURBO_TOKEN | grep -P "^[a-zA-Z0-9]{48}$"
+          echo $TURBO_TEAM | grep -P "^ci$"
