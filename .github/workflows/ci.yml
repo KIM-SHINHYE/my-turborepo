@@ -22,7 +22,9 @@ jobs:
           cache: "pnpm" # pnpm 캐시를 사용하도록 설정
 
       - name: Install pnpm
-        run: npm install -g pnpm # pnpm을 전역으로 설치
+        run: |
+          npm install -g pnpm # pnpm을 전역으로 설치
+          echo "::add-path::$(npm bin -g)" 
 
       - name: Install dependencies
         run: pnpm install
