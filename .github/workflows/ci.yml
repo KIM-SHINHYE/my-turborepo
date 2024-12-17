@@ -19,15 +19,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "18" # Node.js 버전 지정
-          cache: "pnpm" # pnpm 캐시를 사용하도록 설정
-
-      - name: Install pnpm
-        run: |
-          npm install -g pnpm # pnpm을 전역으로 설치
-          echo "::add-path::$(npm bin -g)" 
 
       - name: Install dependencies
-        run: pnpm install
+        run: npm install # npm을 사용하여 의존성 설치
 
       - name: Build
-        run: pnpm build
+        run: npm run build # npm을 사용하여 빌드
