@@ -5,6 +5,7 @@ import { Button } from "@repo/ui/button";
 import styles from "./page.module.css";
 import { useRouter } from "next/navigation";
 import { createNavigateToUser } from "@repo/router";
+import { Test } from "@repo/ui/test";
 type Props = Omit<ImageProps, "src"> & {
   srcLight: string;
   srcDark: string;
@@ -62,12 +63,13 @@ export default function Home() {
             Read our docs
           </a>
         </div>
-        <Button appName="web" className={styles.secondary}>
+        <Button appName="web" className="bg-slate-500 rounded-3xl">
           Open alert
         </Button>
-        <button className={styles.secondary} onClick={() => navigateToUser()}>
+        <button className="bg-slate-500" onClick={() => navigateToUser()}>
           User
         </button>
+        <Test />
       </main>
       <footer className={styles.footer}>
         <a
