@@ -1,8 +1,27 @@
 {
   "name": "@repo/ui",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "type": "module",
-  "private": true,
+  "description": "desc",
+  "author": "shinhye", 
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KIM-SHINHYE/my-turborepo.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "files": [
+    "dist/",
+    "src/"
+  ],
+  "keywords": [
+    "ui",
+    "tailwind",
+    "react",
+    "typescript"
+  ],
   "exports": {
     "./button": "./src/button.tsx",
     "./card": "./src/card.tsx",

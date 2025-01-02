@@ -23,9 +23,6 @@ importers:
       '@repo/router':
         specifier: workspace:*
         version: link:../../packages/router
-      '@repo/ui':
-        specifier: workspace:*
-        version: link:../../packages/ui
       next:
         specifier: ^15.0.0
         version: 15.0.3(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -42,6 +39,9 @@ importers:
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
+      '@repo/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
       '@types/node':
         specifier: ^20
         version: 20.17.6
