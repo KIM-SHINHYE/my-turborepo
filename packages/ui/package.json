@@ -7,7 +7,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/KIM-SHINHYE/my-turborepo.git"
+    "url": "https://github.com/shinhye/my-turborepo.git"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
