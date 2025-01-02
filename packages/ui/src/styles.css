@@ -1,0 +1,4 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* 이 부분을 지우면 tailwind가 적용되지 않음 */

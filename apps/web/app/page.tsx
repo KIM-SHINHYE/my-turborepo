@@ -6,6 +6,9 @@ import styles from "./page.module.css";
 import { useRouter } from "next/navigation";
 import { createNavigateToUser } from "@repo/router";
 import { Test } from "@repo/ui/test";
+import { Abc } from "@repo/ui/abc";
+import "@repo/ui/styles"; // css를 추가해줘야 해당 컴포넌트에 있는 tailwind가 적용됨 -> 사용하는 쪽에서 
+
 type Props = Omit<ImageProps, "src"> & {
   srcLight: string;
   srcDark: string;
@@ -63,13 +66,17 @@ export default function Home() {
             Read our docs
           </a>
         </div>
-        <Button appName="web" className="bg-slate-500 rounded-3xl">
+        <Button appName="web" className="border border-primary text-customColor">
           Open alert
         </Button>
-        <button className="bg-slate-500" onClick={() => navigateToUser()}>
+        <button className="bg-slate-700" onClick={() => navigateToUser()}>
           User
         </button>
         <Test />
+        <Abc />
+        <button className="bg-purple-300">
+          <p className="text-commonColor">commonColor 적용</p>
+        </button>
       </main>
       <footer className={styles.footer}>
         <a

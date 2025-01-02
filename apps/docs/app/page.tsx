@@ -5,6 +5,8 @@ import { Button } from "@repo/ui/button";
 import styles from "./page.module.css";
 import { useRouter } from "next/navigation";
 import { createNavigateToUser } from "@repo/router";
+import "@repo/ui/styles";
+import { Test } from "@repo/ui/test";
 
 type Props = Omit<ImageProps, "src"> & {
   srcLight: string;
@@ -68,6 +70,10 @@ export default function Home() {
         </Button>
         <button className={styles.secondary} onClick={() => navigateToUser()}>
           User
+        </button>
+        <Test />
+        <button className="bg-purple-300">
+          <p className="text-commonColor">commonColor 적용</p>
         </button>
       </main>
       <footer className={styles.footer}>

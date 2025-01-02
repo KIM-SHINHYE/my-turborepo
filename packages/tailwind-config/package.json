@@ -2,5 +2,12 @@
   "name": "@repo/tailwind-config",
   "version": "0.0.0",
   "private": true,
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "tailwindcss": "^3.4.17",
+    "@repo/typescript-config": "workspace:*"
+  },
+  "exports": {
+    ".": "./tailwind.config.ts"
+  }
 }

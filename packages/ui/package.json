@@ -9,20 +9,27 @@
     "./code": "./src/code.tsx",
     "./modal": "./src/modal.tsx",
     "./chip": "./src/chip.tsx",
-    "./test": "./src/test.tsx"
+    "./test": "./src/test.tsx",
+    "./abc": "./src/abc.tsx",
+    "./styles": "./dist/index.css"
   },
   "scripts": {
+    "build": "tailwindcss -i ./src/styles.css -o ./dist/index.css",
     "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component",
-    "check-types": "tsc --noEmit"
+    "check-types": "tsc --noEmit",
+    "dev": "tailwindcss -i ./src/styles.css -o ./dist/index.css --watch"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
+    "@repo/tailwind-config": "workspace:*",
     "@turbo/gen": "^1.12.4",
     "@types/node": "^20.11.24",
     "@types/react": "18.3.0",
     "@types/react-dom": "18.3.1",
+    "autoprefixer": "^10.4.20",
+    "tailwindcss": "^3.4.17",
     "typescript": "5.5.4"
   },
   "dependencies": {
