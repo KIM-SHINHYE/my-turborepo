@@ -1,13 +1,13 @@
 "use client";
 
 import Image, { type ImageProps } from "next/image";
-import { Button } from "@shinhye/ui/button";
+import { Button } from "@KIM-SHINHYE/ui/button";
 import styles from "./page.module.css";
 import { useRouter } from "next/navigation";
 import { createNavigateToUser } from "@repo/router";
-import { Test } from "@shinhye/ui/test";
-import { Abc } from "@shinhye/ui/abc";
-import "@shinhye/ui/styles"; // css를 추가해줘야 해당 컴포넌트에 있는 tailwind가 적용됨 -> 사용하는 쪽에서
+import { Test } from "@KIM-SHINHYE/ui/test";
+import { Abc } from "@KIM-SHINHYE/ui/abc";
+import "@KIM-SHINHYE/ui/styles"; // css를 추가해줘야 해당 컴포넌트에 있는 tailwind가 적용됨 -> 사용하는 쪽에서
 
 type Props = Omit<ImageProps, "src"> & {
   srcLight: string;

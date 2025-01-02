@@ -1,6 +1,6 @@
-// import { Modal } from "@shinhye/ui/modal";
-import { Chip } from "@shinhye/ui/chip";
-import { Test } from "@shinhye/ui/test";
+// import { Modal } from "@KIM-SHINHYE/ui/modal";
+import { Chip } from "@KIM-SHINHYE/ui/chip";
+import { Test } from "@KIM-SHINHYE/ui/test";
 export default function UserDetail() {
   return (
     <div>
