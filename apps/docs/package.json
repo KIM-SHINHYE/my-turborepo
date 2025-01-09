@@ -19,7 +19,7 @@
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
-    "@KIM-SHINHYE/ui": "workspace:*",
+    "@repo/ui": "workspace:*",
     "@types/node": "^20",
     "@types/react": "18.3.1",
     "@types/react-dom": "18.3.0",

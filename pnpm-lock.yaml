@@ -38,7 +38,7 @@ importers:
       "@repo/typescript-config":
         specifier: workspace:*
         version: link:../../packages/typescript-config
-      "@KIM-SHINHYE/ui":
+      "@repo/ui":
         specifier: workspace:*
         version: link:../../packages/ui
       "@types/node":
@@ -78,7 +78,7 @@ importers:
       "@repo/typescript-config":
         specifier: workspace:*
         version: link:../../packages/typescript-config
-      "@KIM-SHINHYE/ui":
+      "@repo/ui":
         specifier: workspace:*
         version: link:../../packages/ui
       "@types/node":

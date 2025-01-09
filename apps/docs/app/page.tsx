@@ -1,12 +1,12 @@
 "use client";
 
 import Image, { type ImageProps } from "next/image";
-import { Button } from "@KIM-SHINHYE/ui/button";
+import { Button } from "@repo/ui/button";
 import styles from "./page.module.css";
 import { useRouter } from "next/navigation";
 import { createNavigateToUser } from "@repo/router";
-import "@KIM-SHINHYE/ui/styles";
-import { Test } from "@KIM-SHINHYE/ui/test";
+import "@repo/ui/styles";
+import { Test } from "@repo/ui/test";
 
 type Props = Omit<ImageProps, "src"> & {
   srcLight: string;
