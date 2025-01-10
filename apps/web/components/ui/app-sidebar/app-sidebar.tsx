@@ -18,7 +18,7 @@ const data = {
   },
   teams: [
     {
-      name: "Acme Inc",
+      name: "Motion",
       logo: GalleryVerticalEnd,
       plan: "Enterprise",
     },
@@ -47,20 +47,12 @@ const data = {
       icon: BookOpen,
       items: [
         {
-          title: "Animation",
-          url: "/documentation/animation",
+          title: "Animations",
+          url: "/documentation/animations",
         },
         {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
-          url: "#",
+          title: "Gestures",
+          url: "/documentation/gestures",
         },
       ],
     },

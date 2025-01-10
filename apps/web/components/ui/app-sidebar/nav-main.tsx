@@ -1,8 +1,7 @@
 "use client"
 
 import { ChevronRight, type LucideIcon } from "lucide-react"
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import Link from "next/link"
 
 import {
   Collapsible,
@@ -34,12 +33,6 @@ export function NavMain({
     }[]
   }[]
 }) {
-  const pathname = usePathname();
-
-  const shouldBeOpen = (item: typeof items[0]) => {
-    return item.items?.some(subItem => pathname.startsWith(subItem.url));
-  };
-
   return (
     <SidebarGroup>
       <SidebarGroupLabel>Platform</SidebarGroupLabel>
