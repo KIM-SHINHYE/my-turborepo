@@ -1,11 +1,7 @@
-"use client";
-
 import { DocTemplate } from "@/components/layout/documentation/doc-template";
-import { BasicAnimations } from "@/app/documentation/animations/components/basic-animations";
-import { AnimationProperties } from "@/app/documentation/animations/components/animation-properties";
-import { ScrollAnimations } from "@/app/documentation/animations/components/scroll-animations";
+import ScrollAnimations from "./components/scroll-animation";
 
-export default function AnimationsPage() {
+export default function ScrollPage() {
   return (
     <DocTemplate
       title="Animation"
@@ -14,8 +10,6 @@ export default function AnimationsPage() {
         "기본적으로 transition 값이 설정되어 있지만 추가하여 적용 가능",
       ]}
     >
-      <BasicAnimations />
-      <AnimationProperties />
       <ScrollAnimations />
     </DocTemplate>
   );

@@ -42,17 +42,25 @@ const data = {
   ],
   navMain: [
     {
-      title: "Documentation",
+      title: "Animations",
       url: "#",
       icon: BookOpen,
       items: [
         {
-          title: "Animations",
-          url: "/documentation/animations",
+          title: "Transitions",
+          url: "/animation/transitions",
         },
         {
           title: "Gestures",
-          url: "/documentation/gestures",
+          url: "/animation/gestures",
+        },
+        {
+          title: "Scroll",
+          url: "/animation/scroll",
+        },
+        {
+          title: "Layout",
+          url: "/animation/layout",
         },
       ],
     },

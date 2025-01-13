@@ -35,14 +35,17 @@ export default function RootPage() {
       <DocSection
         title="motion 컴포넌트"
         description={[
+          "<motion/>",
           "motion은 HTML 요소에 접두사로 붙여 사용",
           "motion 컴포넌트는 일반 HTML 요소처럼 동작하므로 크기나 내용이 있어야 화면에 표시",
           "모든 HTML/SVG 요소에 motion을 적용할 수 있음 (예: motion.div, motion.button, motion.path)",
           "className, style 등 기존 HTML 속성을 모두 사용 가능",
-          "추가로 animate, transition, variants 등 애니메이션 관련 prop을 사용할 수 있음"
+          "추가로 animate, transition, variants 등 애니메이션 관련 prop을 사용할 수 있음",
         ]}
       >
-        <CodeBlock code={`// 기본적인 motion 컴포넌트 사용
+        <CodeBlock code={basicMotionCode} variant="default" />
+        <CodeBlock
+          code={`// 기본적인 motion 컴포넌트 사용
 <motion.div className="w-20 h-20 bg-blue-500" />
 <motion.button className="px-4 py-2 bg-green-500">
   Click me
@@ -51,7 +54,9 @@ export default function RootPage() {
 // SVG 요소에도 적용 가능
 <motion.svg>
   <motion.path d="M0 0h100v100H0z" />
-</motion.svg>`} variant="default" />
+</motion.svg>`}
+          variant="default"
+        />
       </DocSection>
     </DocTemplate>
   );

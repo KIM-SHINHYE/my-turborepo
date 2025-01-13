@@ -1,12 +1,13 @@
 interface DocSectionProps {
   title: string;
   description?: string | string[];
+  listType?: "ul" | "ol";
   children: React.ReactNode;
 }
 
 interface SubSectionProps {
   title: string;
-  description?: string;
+  description?: string | string[];
   children: React.ReactNode;
 }
 
@@ -14,7 +15,13 @@ export function SubSection({ title, description, children }: SubSectionProps) {
   return (
     <div className="mt-8">
       <h3 className="text-xl font-semibold mb-3">{title}</h3>
-      {description && (
+      {Array.isArray(description) ? (
+        <ul className="mb-6 space-y-2 list-disc list-inside text-gray-700">
+          {description.map((item, index) => (
+            <li key={index}>{item.replace(/^\d+\.\s*/, "")}</li>
+          ))}
+        </ul>
+      ) : (
         <p className="mb-4 text-gray-700">{description}</p>
       )}
       {children}
@@ -22,22 +29,30 @@ export function SubSection({ title, description, children }: SubSectionProps) {
   );
 }
 
-export function DocSection({ title, description, children }: DocSectionProps) {
+export function DocSection({ title, description, listType = "ul", children }: DocSectionProps) {
   return (
     <section className="mb-16 first:mt-0 mt-16 border-t pt-12 first:border-0 first:pt-0">
       <h2 className="text-3xl font-semibold mb-6">{title}</h2>
-      
+
       {Array.isArray(description) ? (
-        <ul className="mb-6 space-y-2 list-disc list-inside text-gray-700">
-          {description.map((item, index) => (
-            <li key={index}>{item}</li>
-          ))}
-        </ul>
+        listType === "ul" ? (
+          <ul className="mb-6 space-y-2 list-disc list-inside text-gray-700">
+            {description.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
+          </ul>
+        ) : (
+          <ol className="mb-6 space-y-2 list-decimal list-inside text-gray-700">
+            {description.map((item, index) => (
+              <li key={index}>{item.replace(/^\d+\.\s*/, "")}</li>
+            ))}
+          </ol>
+        )
       ) : (
-        <p className="mb-6 text-gray-700">{description}</p>
+        description && <p className="mb-6 text-gray-700">{description}</p>
       )}
 
       {children}
     </section>
   );
-} 
+}
